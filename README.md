@@ -74,18 +74,19 @@ fusionPay
 ## API
 
 `FusionPay(apiUrl: string)`
-`apiUrl: The API URL for payment.`
+
+- `apiUrl: The API URL for payment.`
 
 ## Methods
 
-`totalPrice(amount: number): FusionPay`
-`addArticle(name: string, value: number): FusionPay`
-`addInfo(info: Record<string, string>): FusionPay`
-`clientName(name: string): FusionPay`
-`clientNumber(number: string): FusionPay`
-`returnUrl(url: string): FusionPay`
-`makePayment(): Promise<AxiosResponse>`
-`checkPaymentStatus(token: string): Promise<AxiosResponse>`
+- `totalPrice(amount: number): FusionPay`
+- `addArticle(name: string, value: number): FusionPay`
+- `addInfo(info: Record<string, string>): FusionPay`
+- `clientName(name: string): FusionPay`
+- `clientNumber(number: string): FusionPay`
+- `returnUrl(url: string): FusionPay`
+- `makePayment(): Promise<AxiosResponse>`
+- `checkPaymentStatus(token: string): Promise<AxiosResponse>`
 
 ## License
 
