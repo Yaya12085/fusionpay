@@ -1,7 +1,7 @@
 /**
  * FusionPay class for handling payment operations.
  */
-class FusionPay {
+export class FusionPay {
   private apiUrl: string;
   private headers: Record<string, string>;
   private paymentData: {
@@ -146,5 +146,3 @@ class FusionPay {
     }
   }
 }
-
-export default FusionPay;

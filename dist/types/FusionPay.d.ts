@@ -1,7 +1,7 @@
 /**
  * FusionPay class for handling payment operations.
  */
-declare class FusionPay {
+export declare class FusionPay {
     private apiUrl;
     private headers;
     private paymentData;
@@ -75,4 +75,3 @@ declare class FusionPay {
      */
     checkPaymentStatus(token: string): Promise<any>;
 }
-export default FusionPay;

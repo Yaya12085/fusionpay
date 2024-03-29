@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FusionPay = void 0;
 /**
  * FusionPay class for handling payment operations.
  */
@@ -128,4 +129,4 @@ class FusionPay {
         }
     }
 }
-exports.default = FusionPay;
+exports.FusionPay = FusionPay;

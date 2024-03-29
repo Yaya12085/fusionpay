@@ -20,7 +20,8 @@ Initializing FusionPay
 To start using FusionPay, you need to initialize a new instance with your API URL:
 
 ```javascript
-const FusionPay = require("fusionpay");
+const { FusionPay } = require("fusionpay");
+//OR import { FusionPay } from "fusionpay";
 
 const fusionPay = new FusionPay("https://your-api-url.com");
 ```
@@ -32,7 +33,8 @@ You can set the payment data using the various methods provided by FusionPay:
 ```javascript
 fusionPay
   .totalPrice(200)
-  .addArticle("sac", 100)
+  .addArticle("Sac", 100)
+  .addArticle("Veste", 200)
   .addInfo({ userId: "1245d858sf8f95f9ff", token: "dffqsyyyysfs56556sjsjh" })
   .clientName("M. Yaya")
   .clientNumber("0574801791")
@@ -50,7 +52,7 @@ fusionPay
     console.log("Payment successful:", response);
   })
   .catch((error) => {
-    console.error("Payment failed:", error.message);
+    console.error("Payment failed:", error);
   });
 ```
 
@@ -67,7 +69,7 @@ fusionPay
     console.log("Payment status:", status);
   })
   .catch((error) => {
-    console.error("Failed to check payment status:", error.message);
+    console.error("Failed to check payment status:", error);
   });
 ```
 
