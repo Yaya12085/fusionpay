@@ -11,6 +11,6 @@
     "declarationDir": "./dist/types",
     "types": ["node"]
   },
-  "include": ["*.ts"],
+  "include": ["src/FusionPay.ts"],
   "exclude": ["node_modules"]
 }

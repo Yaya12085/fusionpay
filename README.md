@@ -20,8 +20,7 @@ Initializing FusionPay
 To start using FusionPay, you need to initialize a new instance with your API URL:
 
 ```javascript
-const FusionPay = require("fusionpay").default;
-//OR import FusionPay from "fusionpay";
+const FusionPay = require("fusionpay");
 
 const fusionPay = new FusionPay("https://your-api-url.com");
 ```
