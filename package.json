@@ -1,6 +1,6 @@
 {
   "name": "fusionpay",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A library for handling payment operations with FusionPay. See: moneyfusion.net",
   "main": "FusionPay.ts",
   "license": "MIT",
@@ -29,7 +29,9 @@
   },
   "homepage": "https://github.com/Yaya12085/fusionpay#readme",
   "dependencies": {
-    "axios": "^1.6.5",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.11"
   }
 }

@@ -1,5 +1,3 @@
-import axios, { AxiosResponse } from "axios";
-
 /**
  * FusionPay class for handling payment operations.
  */
@@ -44,7 +42,7 @@ class FusionPay {
   /**
    * Adds an article to the payment data.
    * @param name - The name of the article.
-   * @param value - The value of the article.
+   * @param value - The price of the article.
    * @returns The FusionPay instance for method chaining.
    * @example
    * fusionPay.addArticle('sac', 100);
@@ -71,7 +69,7 @@ class FusionPay {
    * @param name - The client name.
    * @returns The FusionPay instance for method chaining.
    * @example
-   * fusionPay.clientName('M. konan');
+   * fusionPay.clientName('M. Yaya Mohamed');
    */
   clientName(name: string): FusionPay {
     this.paymentData.nomclient = name;
@@ -108,14 +106,21 @@ class FusionPay {
    * @example
    * fusionPay.makePayment().then(response => { console.log(response); });
    */
-  async makePayment(): Promise<AxiosResponse> {
+  async makePayment(): Promise<any> {
     try {
-      const response = await axios.post(this.apiUrl, this.paymentData, {
+      const response = await fetch(this.apiUrl, {
+        method: "POST",
         headers: this.headers,
+        body: JSON.stringify(this.paymentData),
       });
-      return response.data;
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
+      return await response.json();
     } catch (error: any) {
-      throw new Error(error.response ? error.response.data : error.message);
+      throw new Error(error.message);
     }
   }
 
@@ -126,13 +131,18 @@ class FusionPay {
    * @example
    * fusionPay.checkPaymentStatus('your_payment_token_here').then(status => { console.log(status); });
    */
-  async checkPaymentStatus(token: string): Promise<AxiosResponse> {
+  async checkPaymentStatus(token: string): Promise<any> {
     const url = `https://www.pay.moneyfusion.net/paiementNotif/${token}`;
     try {
-      const response = await axios.get(url);
-      return response.data;
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
+      return await response.json();
     } catch (error: any) {
-      throw new Error(error.response ? error.response.data : error.message);
+      throw new Error(error.message);
     }
   }
 }
