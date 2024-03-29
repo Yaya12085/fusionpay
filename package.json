@@ -1,0 +1,35 @@
+{
+  "name": "fusionpay",
+  "version": "0.0.1",
+  "description": "A library for handling payment operations with FusionPay. See: moneyfusion.net",
+  "main": "FusionPay.ts",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yaya12085/fusionpay.git"
+  },
+  "keywords": [
+    "payment",
+    "fusionpay",
+    "payment-gateway",
+    "online-payment",
+    "transaction",
+    "ecommerce",
+    "money-transfer",
+    "checkout",
+    "payment-processing",
+    "moneyfusion"
+  ],
+  "author": "Yaya Mohamed",
+  "bugs": {
+    "url": "https://github.com/Yaya12085/fusionpay/issues"
+  },
+  "homepage": "https://github.com/Yaya12085/fusionpay#readme",
+  "dependencies": {
+    "axios": "^1.6.5",
+    "typescript": "^5.3.3"
+  }
+}

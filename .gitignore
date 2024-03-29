@@ -1,0 +1,12 @@
+*.log
+npm-debug.log
+tmp
+build
+dist
+node_modules
+*.log
+npm-debug.log
+.DS_Store
+node_modules
+tmp
+example
