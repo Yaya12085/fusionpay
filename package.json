@@ -1,6 +1,6 @@
 {
   "name": "fusionpay",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A library for handling payment operations with FusionPay. See: moneyfusion.net",
   "main": "dist/FusionPay.js",
   "types": "dist/types/FusionPay.d.ts",
@@ -31,10 +31,9 @@
     "url": "https://github.com/Yaya12085/fusionpay/issues"
   },
   "homepage": "https://github.com/Yaya12085/fusionpay#readme",
-  "dependencies": {
-    "typescript": "^5.3.3"
-  },
   "devDependencies": {
-    "@types/node-fetch": "^2.6.11"
+    "@types/node": "^22.8.7",
+    "@types/node-fetch": "^2.6.11",
+    "typescript": "^5.6.3"
   }
 }

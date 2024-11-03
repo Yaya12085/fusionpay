@@ -1,77 +1,88 @@
 /**
- * FusionPay class for handling payment operations.
+ * Generic type for custom payment data that user wants to store and retrieve after payment
  */
-export declare class FusionPay {
+export type CustomPaymentData = Record<string, any>;
+interface PaymentResponse {
+    statut: boolean;
+    token: string;
+    message: string;
+    url: string;
+}
+interface PaymentVerificationData<T = CustomPaymentData> {
+    _id: string;
+    tokenPay: string;
+    numeroSend: string;
+    nomclient: string;
+    personal_Info: T[];
+    numeroTransaction: string;
+    Montant: number;
+    frais: number;
+    statut: "pending" | "paid" | "failed";
+    moyen: string;
+    return_url: string;
+    createdAt: string;
+}
+interface PaymentVerificationResponse<T = CustomPaymentData> {
+    statut: boolean;
+    data: PaymentVerificationData<T>;
+    message: string;
+}
+/**
+ * FusionPay class for handling payment operations with MoneyFusion payment gateway.
+ * @template T Type of custom data to be stored in personal_Info
+ */
+export declare class FusionPay<T = CustomPaymentData> {
     private apiUrl;
-    private headers;
+    private readonly headers;
     private paymentData;
     /**
      * Initializes a new instance of the FusionPay class.
-     * @param apiUrl - The API URL for payment.
+     * @param apiUrl - The API URL for payment processing.
      */
     constructor(apiUrl: string);
     /**
      * Sets the total price for the payment.
      * @param amount - The total price amount.
-     * @returns The FusionPay instance for method chaining.
-     * @example
-     * fusionPay.totalPrice(200);
      */
-    totalPrice(amount: number): FusionPay;
+    totalPrice(amount: number): this;
     /**
      * Adds an article to the payment data.
      * @param name - The name of the article.
      * @param value - The price of the article.
-     * @returns The FusionPay instance for method chaining.
-     * @example
-     * fusionPay.addArticle('sac', 100);
      */
-    addArticle(name: string, value: number): FusionPay;
+    addArticle(name: string, value: number): this;
     /**
-     * Adds personal info to the payment data.
-     * @param info - The personal info object.
-     * @returns The FusionPay instance for method chaining.
-     * @example
-     * fusionPay.addInfo({ userId: '1245d858sf8f95f9ff', token: 'dffqsyyyysfs56556sjsjh' });
+     * Adds custom data to personal_Info that will be returned after payment processing.
+     * @param data - Custom data object to store with the payment
      */
-    addInfo(info: Record<string, string>): FusionPay;
+    addInfo(data: T): this;
     /**
      * Sets the client name for the payment.
      * @param name - The client name.
-     * @returns The FusionPay instance for method chaining.
-     * @example
-     * fusionPay.clientName('M. Yaya Mohamed');
      */
-    clientName(name: string): FusionPay;
+    clientName(name: string): this;
     /**
      * Sets the client number for the payment.
-     * @param number - The client number.
-     * @returns The FusionPay instance for method chaining.
-     * @example
-     * fusionPay.clientNumber('0574801791');
+     * @param number - The client phone number.
      */
-    clientNumber(number: string): FusionPay;
+    clientNumber(number: string): this;
     /**
-     * Sets the return URL for the payment.
-     * @param url - The return URL.
-     * @returns The FusionPay instance for method chaining.
-     * @example
-     * fusionPay.returnUrl('https://mon_lien_de_callback.com');
+     * Sets the return URL for the payment callback.
+     * @param url - The return URL where payment token will be appended.
      */
-    returnUrl(url: string): FusionPay;
+    returnUrl(url: string): this;
     /**
      * Makes a payment using the configured payment data.
      * @returns A promise that resolves with the payment response.
-     * @example
-     * fusionPay.makePayment().then(response => { console.log(response); });
+     * @throws Error if the payment request fails.
      */
-    makePayment(): Promise<any>;
+    makePayment(): Promise<PaymentResponse>;
     /**
      * Checks the payment status using a token.
-     * @param token - The payment token.
-     * @returns A promise that resolves with the payment status.
-     * @example
-     * fusionPay.checkPaymentStatus('your_payment_token_here').then(status => { console.log(status); });
+     * @param token - The payment token received as URL query parameter.
+     * @returns A promise that resolves with the payment verification response.
+     * @throws Error if the status check fails.
      */
-    checkPaymentStatus(token: string): Promise<any>;
+    checkPaymentStatus(token: string): Promise<PaymentVerificationResponse<T>>;
 }
+export {};
