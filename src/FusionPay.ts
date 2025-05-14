@@ -3,14 +3,14 @@
  */
 export type CustomPaymentData = Record<string, any>;
 
-interface PaymentResponse {
+export interface PaymentResponse {
   statut: boolean;
   token: string;
   message: string;
   url: string;
 }
 
-interface PaymentVerificationData<T = CustomPaymentData> {
+export interface PaymentVerificationData<T = CustomPaymentData> {
   _id: string;
   tokenPay: string;
   numeroSend: string;
@@ -25,7 +25,7 @@ interface PaymentVerificationData<T = CustomPaymentData> {
   createdAt: string;
 }
 
-interface PaymentVerificationResponse<T = CustomPaymentData> {
+export interface PaymentVerificationResponse<T = CustomPaymentData> {
   statut: boolean;
   data: PaymentVerificationData<T>;
   message: string;
@@ -45,6 +45,7 @@ export class FusionPay<T = CustomPaymentData> {
     numeroSend?: string;
     nomclient?: string;
     return_url?: string;
+    webhook_url?: string;
   };
 
   /**
@@ -114,6 +115,15 @@ export class FusionPay<T = CustomPaymentData> {
    */
   public returnUrl(url: string): this {
     this.paymentData.return_url = url;
+    return this;
+  }
+
+  /**
+   * Adds a webhook URL for payment notifications.
+   * @param url - The webhook URL to receive payment notifications.
+   */
+  public webhookUrl(url: string): this {
+    this.paymentData.webhook_url = url;
     return this;
   }
 

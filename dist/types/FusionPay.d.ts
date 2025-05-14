@@ -2,13 +2,13 @@
  * Generic type for custom payment data that user wants to store and retrieve after payment
  */
 export type CustomPaymentData = Record<string, any>;
-interface PaymentResponse {
+export interface PaymentResponse {
     statut: boolean;
     token: string;
     message: string;
     url: string;
 }
-interface PaymentVerificationData<T = CustomPaymentData> {
+export interface PaymentVerificationData<T = CustomPaymentData> {
     _id: string;
     tokenPay: string;
     numeroSend: string;
@@ -22,7 +22,7 @@ interface PaymentVerificationData<T = CustomPaymentData> {
     return_url: string;
     createdAt: string;
 }
-interface PaymentVerificationResponse<T = CustomPaymentData> {
+export interface PaymentVerificationResponse<T = CustomPaymentData> {
     statut: boolean;
     data: PaymentVerificationData<T>;
     message: string;
@@ -72,6 +72,11 @@ export declare class FusionPay<T = CustomPaymentData> {
      */
     returnUrl(url: string): this;
     /**
+     * Adds a webhook URL for payment notifications.
+     * @param url - The webhook URL to receive payment notifications.
+     */
+    webhookUrl(url: string): this;
+    /**
      * Makes a payment using the configured payment data.
      * @returns A promise that resolves with the payment response.
      * @throws Error if the payment request fails.
@@ -85,4 +90,3 @@ export declare class FusionPay<T = CustomPaymentData> {
      */
     checkPaymentStatus(token: string): Promise<PaymentVerificationResponse<T>>;
 }
-export {};

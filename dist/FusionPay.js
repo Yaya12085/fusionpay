@@ -70,6 +70,14 @@ class FusionPay {
         return this;
     }
     /**
+     * Adds a webhook URL for payment notifications.
+     * @param url - The webhook URL to receive payment notifications.
+     */
+    webhookUrl(url) {
+        this.paymentData.webhook_url = url;
+        return this;
+    }
+    /**
      * Makes a payment using the configured payment data.
      * @returns A promise that resolves with the payment response.
      * @throws Error if the payment request fails.
