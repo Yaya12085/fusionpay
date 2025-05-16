@@ -178,7 +178,7 @@ interface PaymentVerificationResponse<T> {
     numeroTransaction: string; // Transaction reference
     Montant: number; // Payment amount
     frais: number; // Transaction fees
-    statut: "pending" | "paid" | "failed"; // Payment status
+    statut: "pending" | "paid" | "failed" | "no paid"; // Payment status
     moyen: string; // Payment method used
     return_url: string; // Callback URL
     createdAt: string; // Transaction timestamp

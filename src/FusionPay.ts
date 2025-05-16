@@ -19,7 +19,7 @@ export interface PaymentVerificationData<T = CustomPaymentData> {
   numeroTransaction: string;
   Montant: number;
   frais: number;
-  statut: "pending" | "paid" | "failed";
+  statut: "pending" | "paid" | "failed" | "no paid";
   moyen: string;
   return_url: string;
   createdAt: string;
